@@ -25,7 +25,7 @@ $(function () {
   }
 
   function contentComment(conid) {
-    let apii = '/' + conid + '/comment';
+    let apii = '/' + conid + '/comments';
     FB.api(
       apii,
       'POST', {

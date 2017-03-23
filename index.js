@@ -3,8 +3,10 @@ FB.getLoginStatus(function (response) {
 });
 
 $(function () {
-var token="EAACEdEose0cBAIeXeJduzVpKPqHJo5B6UnfLsfBcDZC95q87lZCeCtY2vlZBTiNUgBo5pCQIyAquS2AD6nQGbEb3w8Kq2pgwjNbrwZCoDkKW4gqjVIFrN145qsu27pRyNmLZAi8IUAePZABYkj0qOY7WplM6d03pDJ7zfTZAhFRLGFUdMcLLmCqim0feMJXMnMZD";
+var token="";
+
   $("#start").click(function () {
+    token=$("#tokenbox").val();
     contentSearch();
 
   });
@@ -20,7 +22,7 @@ var token="EAACEdEose0cBAIeXeJduzVpKPqHJo5B6UnfLsfBcDZC95q87lZCeCtY2vlZBTiNUgBo5
       function (response) {
         let textid = response.data[0].id;
         console.log(textid, response);
-        // contentComment(textid);
+        contentComment(textid);
       }
     );
   }
@@ -30,7 +32,8 @@ var token="EAACEdEose0cBAIeXeJduzVpKPqHJo5B6UnfLsfBcDZC95q87lZCeCtY2vlZBTiNUgBo5
     FB.api(
       apii,
       'POST', {
-        "message": "+1"
+        "message": "+1",
+        "access_token":token
       },
       function (response) {
         // Insert your code here

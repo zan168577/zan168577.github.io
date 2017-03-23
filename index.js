@@ -1,19 +1,24 @@
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
+FB.getLoginStatus(function (response) {
+  statusChangeCallback(response);
 });
-let day=0,mon=0;
+let day = 0;
+let mon = 0;
 
-$(function() {
-day=$("#daybox").val();
-mon=$("#monbox").val();
-let date=new date("2017-"+mon+"-"+day+" 09:59:00");
-  $("#start").click(function(){
-      FB.api(
+$(function () {
+
+  $("#start").click(function () {
+
+    day = $("#daybox").val();
+    mon = $("#monbox").val();
+    let date = new date("2017-" + mon + "-" + day + " 09:59:00");
+    FB.api(
       '/approprie/posts',
-      'GET',
-      {"since":date,"limit":"1"},
-      function(response) {
-      // Insert your code here
+      'GET', {
+        "since": date,
+        "limit": "1"
+      },
+      function (response) {
+        // Insert your code here
         console.log(response);
       }
     );
@@ -21,4 +26,3 @@ let date=new date("2017-"+mon+"-"+day+" 09:59:00");
 
 
 });
-

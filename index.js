@@ -19,7 +19,8 @@ $(function () {
       },
       function (response) {
         // Insert your code here
-        console.log(response);
+        let textid=response.data[0].id;
+        console.log(textid,response);
       }
     );
   });

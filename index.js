@@ -10,7 +10,7 @@ $(function () {
 
     day = $("#daybox").val();
     mon = $("#monbox").val();
-    let date = new date("2017-" + mon + "-" + day + " 09:59:00");
+    let date = "2017-" + mon + "-" + day + " 09:59:00";
     FB.api(
       '/approprie/posts',
       'GET', {

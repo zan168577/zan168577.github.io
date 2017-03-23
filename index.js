@@ -1,3 +1,8 @@
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+
+
 $(function() {
   $("#start").click(function(){
       FB.api(

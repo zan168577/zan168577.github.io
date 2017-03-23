@@ -6,7 +6,7 @@ let day=0,mon=0;
 $(function() {
 day=$("#daybox").val();
 mon=$("#monbox").val();
-let date="2017-"+mon+"-"+day+" 09:59:00";
+let date=new date("2017-"+mon+"-"+day+" 09:59:00");
   $("#start").click(function(){
       FB.api(
       '/approprie/posts',

@@ -1,29 +1,25 @@
 FB.getLoginStatus(function (response) {
   statusChangeCallback(response);
 });
-let day = 0;
-let mon = 0;
 
 $(function () {
 
   $("#start").click(function () {
-
-    day = $("#daybox").val();
-    mon = $("#monbox").val();
-    let date = "2017-" + mon + "-" + day + " 09:59:00";
-    FB.api(
+contentSearch();
+    
+  });
+function contentSearch(){
+  FB.api(
       '/approprie/posts',
       'GET', {
-        "since": date,
+        "since": "2017-03-22 09:59:00",
         "limit": "1"
       },
       function (response) {
-        // Insert your code here
         let textid=response.data[0].id;
         console.log(textid,response);
       }
     );
-  });
-
+}
 
 });

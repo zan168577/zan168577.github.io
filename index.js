@@ -4,6 +4,8 @@ var mm = today.getMonth() + 1; //January is 0!
 var yyyy = today.getFullYear();
 var date = yyyy + '-' + mm + '-' + dd + ' 09:59:00';
 
+let sec = today.getSeconds();
+
 $(function() {
     var token = "";
     FB.getLoginStatus(function(response) {
@@ -17,7 +19,7 @@ $(function() {
     });
 
     function contentSearch() {
-        let sec = new Date().getSeconds;
+        sec = new Date().getSeconds;
         if (new Date().getSeconds >= sec) {
             FB.api(
                 '/approprie/posts',
@@ -29,11 +31,12 @@ $(function() {
                 function(response) {
                     if (!response.data[0]) {
                         loging('尚未發文...');
+                        sec = sec + 2;
                         contentSearch();
                     } else {
                         let textid = response.data[0].id;
                         loging('已搜尋到文章！準備留言！');
-                        // contentComment(textid);
+                        contentComment(textid);
                     }
                 }
             );
@@ -64,6 +67,6 @@ $(function() {
 
     function loging(msg) {
         let str = $("#loghere").text() + msg;
-        $("#loghere").html('<div>' + str + '</div>');
+        $("#loghere").html('-----' + str);
     }
 });

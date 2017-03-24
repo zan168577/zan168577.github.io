@@ -13,8 +13,8 @@ $(function() {
 
     $("#start").click(function() {
         token = $("#tokenbox").val();
+        loging('開始搜尋今天 17:59 之後的文章..');
         contentSearch();
-
     });
 
     function contentSearch() {
@@ -26,7 +26,7 @@ $(function() {
                 "access_token": token
             },
             function(response) {
-                if (response.error) {
+                if (!response.data) {
                     loging('尚未發文...');
                 } else {
                     let textid = response.data[0].id;

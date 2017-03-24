@@ -17,9 +17,9 @@ $(function() {
         loging('開始搜尋今天 17:59 之後的文章..');
         contentSearch();
     });
+    sec = new Date().getSeconds;
 
     function contentSearch() {
-        sec = new Date().getSeconds;
         if (new Date().getSeconds >= sec) {
             FB.api(
                 '/approprie/posts',

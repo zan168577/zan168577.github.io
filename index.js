@@ -20,8 +20,12 @@ $(function() {
                 "access_token": token
             },
             function(response) {
-                let textid = response.data[0].id;
-                console.log(textid, response);
+                if (response.error) {
+                    loging('尚未發文...');
+                } else {
+                    let textid = response.data[0].id;
+                    loging('已搜尋到文章！準備留言！');
+                }
                 // contentComment(textid);
             }
         );
@@ -38,12 +42,16 @@ $(function() {
             function(response) {
                 // Insert your code here
                 if (response.id) {
-                    alert('留言成功!');
+                    loging('留言成功!');
                 } else {
-                    console.log('再次嘗試');
+                    loging('再次嘗試...');
                 }
             }
         );
     }
 
+    function loging(msg) {
+        let str = $("#loghere").text() + msg + '/n';
+        $("#loghere").text(str);
+    }
 });

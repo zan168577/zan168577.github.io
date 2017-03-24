@@ -27,7 +27,7 @@ $(function() {
                     "access_token": token
                 },
                 function(response) {
-                    if (!response.data) {
+                    if (!response.data[0]) {
                         loging('尚未發文...');
                         contentSearch();
                     } else {

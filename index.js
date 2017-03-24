@@ -18,6 +18,7 @@ $(function() {
     });
 
     function contentSearch() {
+        let sec = new Date().getSeconds;
         FB.api(
             '/approprie/posts',
             'GET', {
@@ -31,8 +32,8 @@ $(function() {
                 } else {
                     let textid = response.data[0].id;
                     loging('已搜尋到文章！準備留言！');
+                    // contentComment(textid);
                 }
-                // contentComment(textid);
             }
         );
     }

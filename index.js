@@ -31,7 +31,7 @@ $(function() {
                 function(response) {
                     if (!response.data[0]) {
                         loging('尚未發文...');
-                        sec = sec + 2;
+                        sec = sec + 5;
                         contentSearch();
                     } else {
                         let textid = response.data[0].id;
@@ -67,6 +67,6 @@ $(function() {
 
     function loging(msg) {
         let str = $("#loghere").text() + msg;
-        $("#loghere").html('-----' + str);
+        $("#loghere").html(str);
     }
 });

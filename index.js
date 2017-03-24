@@ -64,6 +64,6 @@ $(function() {
 
     function loging(msg) {
         let str = $("#loghere").text() + msg;
-        $("#loghere").html(str + '</br>');
+        $("#loghere").html('<div>' + str + '</div>');
     }
 });

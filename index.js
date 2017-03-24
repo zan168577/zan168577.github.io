@@ -26,7 +26,7 @@ $(function() {
                 "access_token": token
             },
             function(response) {
-                if (!response.data) {
+                if (!response.data[0].id) {
                     loging('尚未發文...');
                 } else {
                     let textid = response.data[0].id;
@@ -58,6 +58,6 @@ $(function() {
 
     function loging(msg) {
         let str = $("#loghere").text() + msg + '</br>';
-        $("#loghere").text(str);
+        $("#loghere").html(str);
     }
 });

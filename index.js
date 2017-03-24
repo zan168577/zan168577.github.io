@@ -1,7 +1,3 @@
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
-
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth() + 1; //January is 0!
@@ -10,6 +6,9 @@ var date = yyyy + '-' + mm + '-' + dd + ' 09:59:00';
 
 $(function() {
     var token = "";
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
 
     $("#start").click(function() {
         token = $("#tokenbox").val();
@@ -19,23 +18,29 @@ $(function() {
 
     function contentSearch() {
         let sec = new Date().getSeconds;
-        FB.api(
-            '/approprie/posts',
-            'GET', {
-                "since": date,
-                "limit": "1",
-                "access_token": token
-            },
-            function(response) {
-                if (!response.data[0]) {
-                    loging('尚未發文...');
-                } else {
-                    let textid = response.data[0].id;
-                    loging('已搜尋到文章！準備留言！');
-                    // contentComment(textid);
+        if (new Date().getSeconds >= sec) {
+            FB.api(
+                '/approprie/posts',
+                'GET', {
+                    "since": date,
+                    "limit": "1",
+                    "access_token": token
+                },
+                function(response) {
+                    if (!response.data) {
+                        loging('尚未發文...');
+                        contentSearch();
+                    } else {
+                        let textid = response.data[0].id;
+                        loging('已搜尋到文章！準備留言！');
+                        // contentComment(textid);
+                    }
                 }
-            }
-        );
+            );
+        } else {
+            contentSearch();
+        }
+
     }
 
     function contentComment(conid) {

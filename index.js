@@ -24,7 +24,7 @@ $(function() {
                 function(response) {
                     if (!response.data[0]) {
                         loging('尚未發文...');
-                        // delaySec(2);
+                        setTimeout(contentSearch,2000);
                         contentSearch();
                     } else {
                         let textid = response.data[0].id;

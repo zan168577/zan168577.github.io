@@ -13,8 +13,7 @@ $(function() {
         contentSearch();
     });
 
-    function contentSearch() {
-        
+    function contentSearch() {        
             FB.api(
                 '/approprie/posts',
                 'GET', {
@@ -25,7 +24,7 @@ $(function() {
                 function(response) {
                     if (!response.data[0]) {
                         loging('尚未發文...');
-                        delaySec(2);
+                        // delaySec(2);
                         contentSearch();
                     } else {
                         let textid = response.data[0].id;

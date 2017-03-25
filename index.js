@@ -24,8 +24,8 @@ $(function() {
                 function(response) {
                     if (!response.data[0]) {
                         loging('尚未發文...');
-                        setTimeout(contentSearch,2000);
-                        contentSearch();
+                        setTimeout(contentSearch,5000);
+                        // contentSearch();
                     } else {
                         let textid = response.data[0].id;
                         loging('已搜尋到文章！準備留言！');

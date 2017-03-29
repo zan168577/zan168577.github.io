@@ -13,25 +13,25 @@ $(function() {
         contentSearch();
     });
 
-    function contentSearch() {        
-            FB.api(
-                '/approprie/posts',
-                'GET', {
-                    "since": date,
-                    "limit": "1",
-                    "access_token": token
-                },
-                function(response) {
-                    if (!response.data[0]) {
-                        loging('尚未發文...');
-                        setTimeout(contentSearch,2000);
-                    } else {
-                        let textid = response.data[0].id;
-                        loging('已搜尋到文章！準備留言！');
-                        contentComment(textid);
-                    }
+    function contentSearch() {
+        FB.api(
+            '/approprie/posts',
+            'GET', {
+                "since": date,
+                "limit": "1",
+                "access_token": token
+            },
+            function(response) {
+                if (!response.data[0]) {
+                    loging('尚未發文...');
+                    setTimeout(contentSearch, 500);
+                } else {
+                    let textid = response.data[0].id;
+                    loging('已搜尋到文章！準備留言！');
+                    contentComment(textid);
                 }
-            );
+            }
+        );
     }
 
     function contentComment(conid) {
@@ -59,7 +59,6 @@ $(function() {
     }
 
     function delaySec(n) {
-        while(n*1000){
-        }
+        while (n * 1000) {}
     }
 });

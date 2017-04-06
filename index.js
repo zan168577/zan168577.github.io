@@ -39,7 +39,7 @@ $(function() {
         FB.api(
             apii,
             'POST', {
-                "message": $scope.comment,
+                "message": $("#comment").val(),
                 "access_token": token
             },
             function(response) {

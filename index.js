@@ -1,5 +1,5 @@
 var today = new Date();
-var dd = today.getDate();
+var dd = today.getDate() - 1;
 var mm = today.getMonth() + 1; //January is 0!
 var yyyy = today.getFullYear();
 var date = yyyy + '-' + mm + '-' + dd + ' 09:59:00';
@@ -39,7 +39,7 @@ $(function() {
         FB.api(
             apii,
             'POST', {
-                "message": "+1",
+                "message": $scope.comment,
                 "access_token": token
             },
             function(response) {

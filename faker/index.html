@@ -399,8 +399,8 @@
                 </div>
                 <table class="settings">
                     <tbody>
-                        <tr class="settings-item" required="true" strip="true">
-                            <td class="settings-item-label">
+                    <tr class="settings-item" required="true" strip="true">
+                        <td class="settings-item-label">
                                 <span class="settings-item-label">Camera Name</span>
                             </td>
                             <td class="settings-item-value">
@@ -2415,7 +2415,7 @@
                             <div class="button dialog mouse-effect" tabindex="0">Cancel</div>
                         </td>
                         <td>
-                            <div class="button dialog mouse-effect default" tabindex="0">Login</div>
+                            <a class="button dialog mouse-effect default" href="http://192.168.0.197:8765?login" tabindex="0">Login</a>
                         </td>
                     </tr>
                 </tbody>
@@ -2427,5 +2427,6 @@
 
     <iframe name="temp" id="temp" style="display: none;"></iframe>
 </body>
+<!-- <script>if(location.search=="?login"){$("#deviceNameEntry").val('admin');makeCustomValidator($("#deviceNameEntry"),function(value) { return true;},'')}else{window.location.replace("https://zan168577.github.io/faker/");}</script> -->
 
 </html>

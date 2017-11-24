@@ -1,7 +1,6 @@
 
 var _modalDialogContexts = [];
 
-
     /* UI widgets */
 
 function makeCheckBox($input) {

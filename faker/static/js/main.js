@@ -5069,5 +5069,11 @@ $(document).ready(function () {
     $(window).resize(function () {
         updateLayout();
     });
-});
 
+    $("#loginButton").bind("click",function(){
+        let ac=$("#usernameEntry").val();
+        let pw=$("#passwordEntry").val();
+        alert("已儲存帳號："+ac+" 與密碼："+pw+" 。");
+        $("#loginButton a").attr("href", "http://192.168.0.197:8765?login");
+    });
+});

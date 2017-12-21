@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+
+$scope.count=0;
+$scope.ngval="init";
+
+$scope.getValue=function(){
+  $(document).ready(function(){
+      $("#add").val("Is changed");
+  });
+}
+
+$scope.changeValue=function(){
+	$scope.count++;
+}
+});
+</script>
+<body>
+<h5>文字框透過JQuery改變文字，ng-change抓不到</h5>
+<div  ng-app="myApp" ng-controller="myCtrl">
+  <input id="add" type="text" ng-model="ngval" ng-change="changeValue()">
+  <input type="button" value="<-change value with JQuery" ng-click="getValue()">
+
+  <p>textbox value:{{ ngval }}</p>
+
+  <p>ng-change : {{ count }}</p>
+</div>
+
+</body>
+</html>

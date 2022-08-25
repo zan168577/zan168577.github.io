@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://www.w3school.com.cn/jquery/jquery.js"></script>
+
+    <style>
+        p {
+            margin: 0;
+        }
+
+        .item {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item">
+        <p>看診日期:(1110808)</p>
+        <input id="DATE" type="text">
+    </div>
+
+    <div class="item">
+        <p>身分證字號:</p>
+        <input id="ID" type="text">
+    </div>
+
+    <div class="item">
+        <p>出生(月):</p>
+        <input id="BM" type="text">
+    </div>
+
+    <div class="item">
+        <p>出生(日):</p>
+        <input id="BD" type="text">
+    </div>
+
+    <label for="GO">
+        <input id="GO" type="checkbox">
+        <span>開始預約，第<span id="COUNT">0</span>次</span>
+    </label>
+
+
+
+    <div style="border: 1px solid gray;">
+        <iframe id="result" style="width: 100vw;height: 50vh;" src="https://www.cmuh.cmu.edu.tw/Home/CmuhIndex"
+            frameborder="0"></iframe>
+    </div>
+
+    <script type="text/javascript">
+        var count = 0;
+        var limit = 300;
+
+        $(document).ready(function () {
+            $("#GO").change(() => {
+                count = 0;
+                appointment();
+            });
+        });
+
+        function appointment() {
+            if ($("#GO").prop("checked")) {
+                let date = $("#DATE").val();
+                let id = $("#ID").val();
+                let bm = $("#BM").val();
+                let bd = $("#BD").val();
+
+                if (date && id && bm && bd) {
+                    let url = "http://61.66.117.10/cgi-bin/fcmc/reg02.cgi?sResult=" + date + "%232%23D18596&Telemedicine=&Ttelno=&CrtIdno=" + id + "&sMonth=" + bm + "&sDay=" + bd;
+
+                    var iframe = document.getElementById('result');
+                    iframe.src = url;
+
+                    count++;
+                    $("#COUNT").text(count)
+
+                    if (count < limit) {
+                        setTimeout(() => {
+                            appointment();
+                        }, 2000);
+                    }
+                    else {
+                        $("#GO").prop("checked", false)
+                    }
+                }
+                else {
+                    $("#GO").prop("checked", false)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

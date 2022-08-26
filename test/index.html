@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+
+<body>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '1845583559041249',
+                xfbml: true,
+                version: 'v2.8',
+                status: true
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1845583559041249";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script src="index.js"></script>
+
+    <div id="fb-root"></div>
+
+    <a href="https://developers.facebook.com/tools/explorer/">點擊此連結</a>
+    <h3> Get Token > 點擊第一個選項 > 勾選 publish_actions > 確定 > 複製Access Token(一長串英數字)</h3>
+    <div>
+        <h3>在下方對話框貼上你的 Token(一長串英數字):</h3>
+    </div>
+    <div> <input type="text" id="tokenbox" name="" value="" style="width: 80%;"></div>
+
+    <div>
+        <input type="text" value="+1" id="comment">
+        <button id="start">click here to comment</button>
+        <div id="loghere"></div>
+    </div>
+
+</body>
+
+</html>
